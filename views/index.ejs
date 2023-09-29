@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Che ridere</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Applicazione che mostra ogni giorno ad orari casuali una battuta divertentissima, tutta da ridere!" />
+  <meta name="author" content="Made by GG">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Icone -->
+  <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/icons/favicon.ico">
+  <!-- CUSTOM STYLES -->
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+  <!-- ANIMATE.CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body class="bg-dark">
+    <div class="container jumbotron">
+        <h1 class="display-4 text-center m-3 titolo">G A B</h1>
+        <p class="lead  text-center fs-1"><span class="left-color">Generatore</span> <span class="middle-color">Automatico</span> <span class="right-color">Battute</span></p>
+        <hr class="my-4">
+        <p class="fs-3">La battuta di oggi è: </p>
+
+        <figure id="figure" class="bg-white p-3 rounded animate__animated animate__tada mb-5" style="<%= battuta.color %>">
+          <blockquote class="blockquote pb-2 animate__animated animate__fadeIn" style="width:fit-content">
+            <p id="text">
+              <!-- Sai perché un pomodoro non attraversa mai la strada? Perché è rosso -->
+              <%- battuta.text %>
+            </p>
+          </blockquote>
+          <figcaption id="author" class="blockquote-footer mb-0 font-italic fade-in-author animate__animated animate__fadeIn">
+            <%- battuta.author %>
+          </figcaption>
+        </figure>
+
+        <p class="lead text-center" style="visibility: hidden;">
+          <a class="btn btn-dark btn-sm" href="#" role="button">Accedi</a>
+        </p>
+      </div>
+      <footer class="text-center fixed-bottom mb-5" style="color:white">
+        Made by GG
+      </footer>
+</body>
+<!-- CUSTOM JS -->
+<script src="/js/main.js"></script>
+<!-- BOOTSTRAP -->
+<script src="/js/bootstrap/bootstrap.min.js"></script>
+</html>
