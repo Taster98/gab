@@ -2,16 +2,27 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>Che ridere</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Applicazione che mostra ogni giorno ad orari casuali una battuta divertentissima, tutta da ridere!" />
+  <title>GAB - Generatore Automatico Battute</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+  <meta name="description" content="Scopri la battuta del giorno, tutta da ridere!" />
+  <meta property="og:title" content="GAB - Generatore Automatico Battute" />
+  <meta property="og:url" content="https://vmi380662.contaboserver.net" />
+  <meta property="og:description" content="Scopri la battuta del giorno, tutta da ridere!" />
+  <meta property="og:image" content="https://vmi380662.contaboserver.net/images/logo_200x200.png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="it_IT" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <meta name="author" content="Made by GG">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Whatsapp metadata -->
+
+  <link rel="manifest" href="manifest.json">
   <!-- Icone -->
   <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
-  <link rel="shortcut icon" type="image/x-icon" href="/img/icons/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/icons/favicon.ico">
   <!-- CUSTOM STYLES -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style2.css">
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
   <!-- ANIMATE.CSS -->
@@ -20,15 +31,29 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 </head>
-<body class="bg-dark">
-    <div class="container jumbotron">
-        <h1 class="display-4 text-center m-3 titolo">G A B</h1>
-        <p class="lead  text-center fs-1"><span class="left-color">Generatore</span> <span class="middle-color">Automatico</span> <span class="right-color">Battute</span></p>
-        <hr class="my-4">
-        <p class="fs-3">La battuta di oggi è: </p>
+<body class="bg-dark" onload="onLoad()">
+  <script>
+    document.body.addEventListener("wheel", e=>{
+      if(e.ctrlKey)
+        e.preventDefault();//prevent zoom
+    });
+  </script>
+  <link itemprop="thumbnailUrl" href="https://vmi380662.contaboserver.net/images/logo_200x200.png">
 
-        <figure id="figure" class="bg-white p-3 rounded animate__animated animate__tada mb-5" style="<%= battuta.color %>">
-          <blockquote class="blockquote pb-2 animate__animated animate__fadeIn" style="width:fit-content">
+  <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+  <link itemprop="url" href="https://vmi380662.contaboserver.net/images/logo_200x200.png">
+  </span>
+    <div class="container jumbotron">
+        <div class="text-center">
+          <img class="text-center" id="logo" src="/images/logo.png" width="180" height="180" alt="Immagine">
+        </div>
+        <h1 id="gtitolo" class="display-4 text-center m-2 titolo"><span class="unselectable" data-bs-toggle="modal" data-bs-target="#modalCapita" id="g">G</span> <span class="unselectable" id="a">A</span> <span class="unselectable" data-bs-toggle="modal" data-bs-target="#buongiornissimo" id="b">B</span></h1>
+        <p id="gsubtitolo" class="lead text-center fs-1"><span id="gen" class="left-color">Generatore</span> <span id="aut" class="middle-color">Automatico</span> <span id="bat" class="right-color">Battute</span></p>
+        <hr class="my-2">
+        <p id="testo" class="fs-3 text-white text-center">La battuta di <span class="unselectable" ondblclick="christmas()">oggi</span> è: </p>
+
+        <figure id="figure" class="mx-3 p-2 bg-white rounded animate__animated animate__tada mb-3" style="<%= battuta.color %>">
+          <blockquote id="block" class="unselectable blockquote pb-1 animate__animated animate__fadeIn">
             <p id="text">
               <!-- Sai perché un pomodoro non attraversa mai la strada? Perché è rosso -->
               <%- battuta.text %>
@@ -38,17 +63,91 @@
             <%- battuta.author %>
           </figcaption>
         </figure>
+          <!-- MODAL l'hai capita? -->
+          <div id="modalCapita" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">L'hai capita?</h5>
+                  <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalSpiego2" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalSpiego">No</button>
+                  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalSpiego">No</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODAL Te la Spiego -->
+          <div id="modalSpiego" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Allora poi te la spiego! <span data-bs-toggle="popover" data-bs-html="true" data-bs-title="Clementino ft. Rocco Hunt?" data-bs-content="<a href='https://open.spotify.com/track/3Wnpj05qRYODWctLveniyc?si=0ca9711a8d3a4366' target='_blank'>QUI!  </a>">&#128512</button></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">YEEE!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODAL Te la Spiego ugualmente-->
+          <div id="modalSpiego2" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Tranquillo! Te la spiego ugualmente eheh &#128541</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">YEEE!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODAL buongiornissimo-->
+          <div id="buongiornissimo" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Buongiornissimo!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/images/buongiorno/<%- immagine %>" alt="Buongiornissimo" width="250" height="auto">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Aww</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="text-center">
+          <p id="condividi" class="text-white">Condividi</p>
+          <button id="waButton" class="btn btn-success" onclick="sendImage()"><i class="fa-brands fa-whatsapp"></i> </button>
+          <button id="tgButton" class="btn btn-primary" onclick="sendImageTg()"><i class="fa-brands fa-telegram"></i> </button>
+        </div>
+
+
 
         <p class="lead text-center" style="visibility: hidden;">
           <a class="btn btn-dark btn-sm" href="#" role="button">Accedi</a>
         </p>
       </div>
-      <footer class="text-center fixed-bottom mb-5" style="color:white">
+      
+      <footer id="footer" class="text-center fixed-bottom mb-3" style="color:white">
+
         Made by GG
       </footer>
 </body>
-<!-- CUSTOM JS -->
-<script src="/js/main.js"></script>
+<!-- POPPER -->
+<script src="/js/bootstrap/popper.min.js"></script>
 <!-- BOOTSTRAP -->
 <script src="/js/bootstrap/bootstrap.min.js"></script>
+<!-- CUSTOM JS -->
+<script src="/js/main.js"></script>
 </html>

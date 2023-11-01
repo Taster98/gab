@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>GAB - Generatore Automatico Battute</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+  <meta name="description" content="Scopri la battuta del giorno, tutta da ridere!" />
+  <meta property="og:title" content="GAB - Generatore Automatico Battute" />
+  <meta property="og:url" content="https://vmi380662.contaboserver.net" />
+  <meta property="og:description" content="Scopri la battuta del giorno, tutta da ridere!" />
+  <meta property="og:image" content="https://vmi380662.contaboserver.net/images/logo_200x200.png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="it_IT" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="author" content="Made by GG">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Whatsapp metadata -->
+
+  <link rel="manifest" href="manifest.json">
+  <!-- Icone -->
+  <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/icons/favicon.ico">
+  <!-- CUSTOM STYLES -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style2.css">
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+  <!-- ANIMATE.CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body class="bg-dark">
+    <p id="gsubtitolo" class="lead text-center fs-1 mt-3 unselectable"><span class="painterTitle">Stupiscimi con un'<span id="opera">opera</span> d'arte!</span></p>
+
+    <div class="container text-center" id="container">
+        <!-- CANVAS -->
+    </div>
+    <div class="text-center">
+        <div id="sidebar" class="bg-white row">
+            <div class="col-sm-2 offset-sm-1 colorButtons">
+                <label class="unselectable" for="colorpicker">Colore pennello</label>
+                <input type="color" id="colorpicker" value="#14c850" class="colorpicker">
+            </div>
+            <div class="col-sm-2 colorButtons">
+                <label class="unselectable" for="colorpicker">Colore sfondo</label>
+                <input type="color" value="#ffffff" id="bgcolorpicker" class="colorpicker">
+            </div>
+    
+            <div class="col-sm-2 toolsButtons">
+                <button id="eraser" class="btn btnSp btn-default"><i class="fa-solid fa-eraser"></i></button>
+                <button id="painter" class="btn btnSp" style="background-color: #14c850;border:solid 1px black;"><i class="fa-solid fa-paintbrush"></i></button>
+            </div>
+    
+            <div class="col-sm-2 buttonSize">
+                <label class="unselectable" for="colorpicker">Dimensione pennello</label>
+                <input type="range" min="1" max="50" value="5" step="1" id="controlSize">
+            </div>
+
+            <div class="col-sm-2 extra">
+                <a id="saveToImage" class="btn btnSp">Download</a>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<!-- BOOTSTRAP -->
+<script src="/js/bootstrap/bootstrap.min.js"></script>
+<!-- CUSTOM JS -->
+<script src="/js/paint.js"></script>
+</html>
